@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Mark VII // Официальный Портал Загрузки</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #060911;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: #00f0ff;
+            --border-subtle: rgba(0, 240, 255, 0.2);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --cyan: #00f0ff;
+            --cyan-dim: #0284c7;
+            --green: #10b981;
+            --amber: #f59e0b;
+            --red: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 10% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* HEADER & ARC REACTOR */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .reactor-box {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reactor-core {
+            width: 48px;
+            height: 48px;
+            background: radial-gradient(circle, #ffffff 0%, var(--cyan) 70%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 35px var(--cyan), 0 0 70px var(--cyan-dim);
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        .reactor-ring {
+            position: absolute;
+            width: 86px;
+            height: 86px;
+            border: 2px dashed rgba(0, 240, 255, 0.6);
+            border-radius: 50%;
+            animation: rotate-ring 12s linear infinite;
+        }
+
+        @keyframes rotate-ring {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--cyan);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* HERO CARD / DOWNLOAD SECTION */
+        .hero-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-size: 19px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--cyan);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0284c7 0%, #00f0ff 100%);
+            color: #050b14;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 20px 45px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.7);
+            color: #000;
+        }
+
+        .btn-download svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .specs-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-size: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            flex-wrap: wrap;
+        }
+
+        .specs-item span {
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        /* GRID SECTION */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 820px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 240, 255, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        /* CHANGELOG */
+        .changelog-release {
+            margin-bottom: 25px;
+        }
+
+        .changelog-release:last-child {
+            margin-bottom: 0;
+        }
+
+        .release-tag {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .tag-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--cyan);
+            font-size: 16px;
+        }
+
+        .tag-date {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .change-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .change-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .badge-fixed { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .badge-new { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-improved { background: rgba(0, 240, 255, 0.2); color: #7dd3fc; border: 1px solid rgba(0, 240, 255, 0.3); }
+
+        /* HOW TO RUN & CHEAT SHEET */
+        .steps-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 240, 255, 0.15);
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+            font-size: 15px;
+        }
+
+        .step-content strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 17px;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .cmd-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .cmd-pill:hover {
+            background: rgba(0, 240, 255, 0.08);
+            border-color: rgba(0, 240, 255, 0.3);
+            color: var(--cyan);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <header>
+        <div class="reactor-box">
+            <div class="reactor-ring"></div>
+            <div class="reactor-core"></div>
+        </div>
+        <h1>JARVIS MARK VII</h1>
+        <div class="subtitle">Autonomous Windows AI Assistant // Release Portal</div>
+    </header>
+
+    <!-- HERO DOWNLOAD SECTION -->
+    <section class="hero-card">
+        <div class="version-badge">● LATEST BUILD: v1.0.2 ALPHA</div>
+        <h2 class="hero-title">Твой персональный ассистент прямо в Windows</h2>
+        <p class="hero-desc">
+            Никаких тяжелых нейросетей, жрущих FPS. 0% нагрузки на CPU в простое.
+            Управляй компьютером голосом, с дивана через телефон или хоткеями во время игр.
+        </p>
+
+        <!-- КНОПКА СКАЧИВАНИЯ (ПОДСТАВЬ СВОЮ ССЫЛКУ НА РЕЛИЗ ИЛИ АРХИВ) -->
+        <a href="https://github.com/MantaFlag/jarvis/releases/latest" class="btn-download" id="downloadBtn">
+            <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+            Скачать Jarvis_v1.0.2_Alpha.zip
+        </a>
+
+        <div class="specs-bar">
+            <div class="specs-item">ОС: <span>Windows 10 / 11 (x64)</span></div>
+            <div class="specs-item">Нагрузка: <span>0% CPU в простое</span></div>
+            <div class="specs-item">Установка: <span>Портативно (Распаковал и играй)</span></div>
+        </div>
+    </section>
+
+    <!-- CONTENT GRID -->
+    <div class="grid-2">
+        <!-- CHANGELOG -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Журнал обновлений (Changelog)</h3>
+            </div>
+
+            <!-- v1.0.2 -->
+            <div class="changelog-release">
+                <div class="release-tag">
+                    <span class="tag-title">Версия 1.0.2 (Alpha)</span>
+                    <span class="tag-date">11.10.2026</span>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-fixed">Fixed</span>
+                        <span>Устранено зависание и падение при выборе микрофона. Переход на нативный WASAPI Peak Meter.</span>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fixed">Fixed</span>
+                        <span>Исправлена белая тема ComboBox в мастере первого запуска — теперь идеальный Dark Neon.</span>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-new">New</span>
+                        <span>Автоматический показ Динамического Острова (Dynamic Island) по центру экрана при старте.</span>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-new">New</span>
+                        <span>Sleep Timer: «Джарвис, выключи компьютер через 40 минут» для фильмов.</span>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-new">New</span>
+                        <span>QR-пульт управления для смартфона по локальной сети без установки приложений.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 20px 0;">
+
+            <!-- v1.0.1 -->
+            <div class="changelog-release">
+                <div class="release-tag">
+                    <span class="tag-title">Версия 1.0.1 (Alpha)</span>
+                    <span class="tag-date">10.10.2026</span>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-new">New</span>
+                        <span>Полноэкранный локскрин Stark Industries с паролем 2840 и удаленным анлоком.</span>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-new">New</span>
+                        <span>Shell Butler: открытие загрузок диска C, диска D, корзины и системных папок.</span>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-improved">Improved</span>
+                        <span>Аппаратное приглушение звука (Ducking) при распознавании речи без щелчков.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- QUICK START & CHEAT SHEET -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Быстрый старт & Команды</h3>
+            </div>
+
+            <ul class="steps-list">
+                <li class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <strong>Распакуй архив</strong>
+                        <p>Скачай zip-архив и распакуй его в любую папку (например, на рабочий стол или диск D).</p>
+                    </div>
+                </li>
+                <li class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <strong>Запусти Jarvis.exe</strong>
+                        <p>При первом запуске откроется калибровка: выбери свой микрофон и настрой громкость.</p>
+                    </div>
+                </li>
+                <li class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <strong>Скажи «Джарвис»</strong>
+                        <p>Вверху экрана появится неоновый Dynamic Island. Попробуй команды ниже:</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="commands-grid">
+                <div class="cmd-pill">🎮 «Запусти CS2 / Доту»</div>
+                <div class="cmd-pill">🎵 «Включи на YouTube фонк»</div>
+                <div class="cmd-pill">📁 «Открой загрузки / диск D»</div>
+                <div class="cmd-pill">🗑️ «Очисти корзину»</div>
+                <div class="cmd-pill">⏳ «Выключи ПК через 40 мин»</div>
+                <div class="cmd-pill">📱 «Подключи телефон»</div>
+                <div class="cmd-pill">🛡️ «Заблокируй экран»</div>
+                <div class="cmd-pill">🔊 «Сделай звук потише на 20%»</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        STARK INDUSTRIES // MARK VII OS COMPANION • BUILT FOR WINDOWS 10/11
+    </footer>
+</div>
+
+</body>
+</html>
